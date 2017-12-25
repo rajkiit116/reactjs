@@ -1,0 +1,28 @@
+<!DOCTYPE html> 
+<html lang = "en">
+    <head>	
+	    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="text/babel">
+		class Clock extends React.Component {
+			  render() {
+				return (
+				  <div>
+					<h1>Hello, world!</h1>
+					<h2>This is {this.props.name}.</h2>
+				  </div>
+				);
+			  }
+		}
+
+		ReactDOM.render(
+			<Clock name="Raj"/>,
+			document.getElementById('root')
+		);		
+     </script>
+    </body>
+</html>
