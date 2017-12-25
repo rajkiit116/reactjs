@@ -8,31 +8,27 @@
     <body>
         <div id="root"></div>
         <script type="text/babel">
-			class Toggle extends React.Component{
-				constructor(props){
-					super(props);
-					this.state={isToggleOn: true};
-					this.handleClick=this.handleClick.bind(this);
-				}
-				handleClick(){
-					this.setState(
-						prevState=>({
-							isToggleOn: !prevState.isToggleOn
-					})
-					);
-				}
+		
+			function UserGreeting (props){
+			return <h2> Hi User</h2>;
+			}
+			function GuestGreeting(props) {
+			
+				return <h2>Please sign in again</h2>;
+			}
+			
+			function Greeting(props) {
+				const isLoggedIn=props.isLoggedIn;
 				
-				render(){
-					return(
-						<button onClick={this.handleClick}>{this.state.isToggleOn ? 'ON':'OFF'}</button>
-					);
-				
-				}
+				if(isLoggedIn) return <UserGreeting />;
+				else return <GuestGreeting />;
+			
 			
 			}
+			
 	
 			ReactDOM.render(
-				<Toggle />,
+				<Greeting isLoggedIn={false}/>,
 				document.getElementById('root')
 				);
         </script>
