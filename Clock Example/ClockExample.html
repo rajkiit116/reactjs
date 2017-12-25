@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>	
+			<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="text/babel">
+			function clock(){
+			const element=(
+				<div>
+				<h1>Hello World</h1>
+				<h3> It is {new Date().toLocaleDateString()}.</h3>
+				<h3> Current Time is {new Date().toLocaleTimeString()}.</h3>
+				</div>
+				);
+			ReactDOM.render(
+				element,
+				document.getElementById('root')
+				);
+			}
+		setInterval(clock,1000);
+        </script>
+
+    </body>
+</html>
