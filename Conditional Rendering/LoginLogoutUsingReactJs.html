@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>	
+		<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="text/babel">
+
+		class LoginControl extends React.Component{
+				constructor(props){
+					super(props);
+					this.handleLogoutClick=this.handleLogoutClick.bind(this);
+					this.handleLoginClick=this.handleLoginClick.bind(this);
+					this.state={isLoggedIn: false};
+				}
+		
+					 handleLogoutClick(){
+					this.setState({
+							isLoggedIn: false;
+						});
+					}
+					 handleLoginClick(){
+						this.setState({
+							isLoggedIn: true;	
+							});
+					}		
+				
+				
+				render(){
+						const isLoggedIn=this.state.isLoggedIn;
+						let button=null;
+						if(isLoggedIn){
+							button=<LogoutButton onclick={this.handleLogoutClick} />;
+						}else {
+							button=<LoginButton onclick={this.handleLoginClick} />;
+						}
+						return(
+							 <div>
+								<Greeting isLoggedIn={isLoggedIn}>
+								{button}
+							</div>
+						);
+				}
+		
+		}
+		
+					function LoginButton(props) {
+					  return (
+						<button onClick={props.onClick}>
+						  Login
+						</button>
+					  );
+					}
+
+					function LogoutButton(props) {
+					  return (
+						<button onClick={props.onClick}>
+						  Logout
+						</button>
+					  );
+					}
+
+					
+		function Greeting(props){
+			const isLoggedIn=props.isLoggedIn;
+			if(isLoggedIn){
+				return <UserLoging/>;
+			}else{
+				return <GuestLoging/>;
+			}
+		}	
+			function UserLoging(){
+			return <h2>Welcome ,Back</h2>;
+			}
+			
+			function GuestLoging(){
+				return <h2>please sign in again</h2>;
+			}
+			ReactDOM.render(
+				<LoginControl />,
+				document.getElementById('root')
+				);
+        </script>
+
+    </body>
+</html>
